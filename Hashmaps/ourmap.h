@@ -43,7 +43,6 @@ public:
     {
         for (int i = 0; i < numBuckets; i++)
             delete buckets[i];
-        delete[] buckets;
     }
 
 private:
@@ -56,7 +55,7 @@ private:
             hashCode += key[i] * coeff;
             hashCode %= numBuckets;
             coeff *= 37;
-            coeff %= 37;
+            coeff %= numBuckets;
         }
 
         return hashCode % numBuckets;
@@ -126,7 +125,7 @@ public:
         {
             if (head->key == key)
             {
-                if (prev == nullptr)
+                if (prev == NULL)
                 {
                     buckets[bucketIndex] = head->next;
                 }
