@@ -4,7 +4,6 @@ using namespace std;
 string minWindow_brute(string s, string t) {
     if(t.length() > s.length()) return "";
     unordered_map<char, int> map;
-    int maxFreqT = 0;
     for(int i = 0; i < t.length(); i++) {
         map[t[i]]++;
     }
